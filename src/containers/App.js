@@ -21,8 +21,8 @@ class App extends Component {
 
 
   }
-  closePopupp(){
-        console.log(this.parentElement)
+  closePopupp(that){
+        document.getElementById('popupp').classList.remove('active');
   }
   render() {
     const { store} = this.props
@@ -33,9 +33,12 @@ class App extends Component {
       <Menu app={Api} store={store} />
       <Api name={api} store={store} setApi={setApi}/>
       <div id='popupp' class='popupp'>
-        <button onClick='closePopupp.bind(this)' 
-            class='popupp__close'>
-        </button>
+        <span  
+            class='popupp__close'
+            onClick={ this.closePopupp.bind(this) }
+            >
+            
+        </span>
         <p>Краткое описание</p>
         <p><input type='text'/></p>
         <p class='popupp__error'></p>

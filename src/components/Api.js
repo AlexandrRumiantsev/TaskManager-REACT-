@@ -48,7 +48,7 @@ export default class Api extends Component {
   }
 
   edit(id , component) {
-    let title = prompt("What's your sign?");
+    let title = prompt("Напишите новое описание задачи");
     this.props.store.dispatch({
       type: 'EDIT_ITEM',
       data: {
