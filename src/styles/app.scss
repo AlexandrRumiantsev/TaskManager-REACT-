@@ -1,0 +1,114 @@
+#app{
+  
+    width: 90%;
+    margin: auto;
+
+    .app__menu{
+      margin: 30px 0; 
+      button{
+        width: 148px;
+        height: 36px;
+        border: 1px solid #39B54A;
+        box-sizing: border-box;
+        border-radius: 4px;
+        background:white;
+        float: right;
+
+      }
+      .menu__title{
+        font-size: 32px;
+      }
+    }
+    .task__item{
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        border: 1px solid #E6E6E6;
+        .task__title{
+          width: 140px;
+        }
+        .task__discr{
+          width: 200px;
+        }
+        .task__btn-block{
+          margin-top:3px;
+          button{
+                width: 25px;
+                height: 25px;
+                border: none;
+                background: white;
+                background-repeat: no-repeat !important;
+                background: white;
+                background-position-y: center;
+            &.task__item-edit{
+              background-image: url("../assets/Vector.png");
+            }
+            &.task__item-del{
+              background-image: url("../assets/Vector (1).png");
+              
+            }
+          background:white;
+          }
+        }
+        
+    }
+
+
+}
+.popupp{
+    position: relative;
+    padding: 20px;
+    margin: 20px auto;
+    background: white;
+    width: 500px;
+    height: 200px;
+    border: 1px solid #F2F2F2;
+    display: none;
+    flex-wrap: wrap;
+    p{
+      width: 100%;
+      margin-bottom: 0;
+    }
+    .popupp__close{
+      width: 25px;
+      height: 25px;
+      border: none;
+      background: white;
+      background-repeat: no-repeat !important;
+      background: white;
+      background-position-y: center;
+      background-image: url("../assets/close.png");
+      position: absolute;
+      right: 5px;
+      top: 10px;
+
+    }
+    .popupp__send{
+        width: 148px;
+        height: 36px;
+        border: 1px solid #39B54A;
+        box-sizing: border-box;
+        border-radius: 4px;
+        background:white;
+        float: right;
+    }
+    .popupp__error{
+      color:red;
+    }
+    input{
+      width: 398px;
+      height: 40px;
+      background: #F2F2F2;
+      border-radius: 4px;
+    }
+    &.active{
+      position: absolute;
+      display: flex;
+      top: 20%;
+      left: 25%;
+    }
+}
+
+
