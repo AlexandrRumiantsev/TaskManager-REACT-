@@ -7,6 +7,11 @@ import Api from '../components/Api'
 
 import * as apiActions from '../actions/ApiActions'
 
+/**
+     * Главный компонент приложения
+     * @component
+     * @function {that} closePopupp - Закрытие попапа
+     */
 
 
 

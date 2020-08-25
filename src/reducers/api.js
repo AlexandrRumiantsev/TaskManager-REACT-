@@ -6,6 +6,11 @@ const initialState = {
     fetching: false
   }
   
+  /**
+     * Промежуточный контроллер, который отвечате за взаимодействие с АПИ
+     * @param {object} state - Состояние приложения
+     * @param {string} action - Действие, исходя из которого работает контроллер
+     */
   export default function setApi(state = initialState, action) {
     switch (action.type) {
         case 'GET_DATA':

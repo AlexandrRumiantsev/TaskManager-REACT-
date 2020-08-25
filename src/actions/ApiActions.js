@@ -2,7 +2,17 @@ import {
   URL
 } from '../constants/Api'
 
-
+/**
+     * Функция для отправки Запроса на сервер (универсальная для 3 действий).
+     * @function
+     * @param {string} type - Тип отпрвляемого запроса
+     * @param {object} component - Объект компонента, 
+          который передается в запрос, для последующего обновления.
+     * @param {string} url - Адрес запроса.
+     * @param {object} param - Параметры запроса.
+     * @param {string} action - Тип действия запроса(можно объеденить с type).
+     * @param {object} store - хранилище данных.
+     */
 const ajax = function(type , component , url , param , action , store){
     
 
@@ -44,7 +54,12 @@ const ajax = function(type , component , url , param , action , store){
       else request.send()
 }
 
-
+/**
+  * Получение данных с сервера
+  * function
+  * @param {string} type - Тип отпрвляемого запроса
+  * @param {object} component - Объект компонента
+**/
 export function getData(type , component) {
       
   ajax(
@@ -55,6 +70,14 @@ export function getData(type , component) {
 
 }
 
+
+/**
+  * Удаление данных элемента на сервере
+  * function
+  * @param {string} type - Тип отпрвляемого запроса
+  * @param {object} component - Объект компонента
+  * @param {string} id - идентификатор элемента
+**/
 export function delItem(type , component , id) {
   ajax(
     'DELETE' , 
@@ -65,7 +88,14 @@ export function delItem(type , component , id) {
   );
 }
 
-
+/**
+  * Добавление данных на сервер
+  * function
+  * @param {object} store - хранилище данных.
+  * @param {string} type - Тип отпрвляемого запроса
+  * @param {object} component - Объект компонента
+  * @param {string} title - новый заголовок задачи-элемента
+**/
 export function addItem(type , component , title , store) {
 
     var params={
@@ -84,7 +114,14 @@ export function addItem(type , component , title , store) {
 }
 
 
-
+/**
+  * Редактирование данных на сервере
+  * function
+  * @param {object} id - идентификатор редактируемого элемента.
+  * @param {string} type - Тип отпрвляемого запроса
+  * @param {object} component - Объект компонента
+  * @param {string} title - новый заголовок задачи-элемента
+**/
 export function editItem(type , component , title , id) {
   console.log(title);
   var params={

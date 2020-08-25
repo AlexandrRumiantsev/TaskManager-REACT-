@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-
-
+import { GET , DEL , EDIT} from '../constants/Api'
+/**
+     * Компонент приложения, который отвечает за отрисовку данных с сервера
+     * @component
+     * @function {component , id} del - Тип отпрвляемого запроса
+       * @param {object} component - Объект компонента, 
+            который передается в запрос, для последующего обновления.
+       * @param {string} id - Идентификатор элемента.
+     */
 export default class Api extends Component {
   constructor() {
     super(...arguments);
@@ -27,7 +34,7 @@ export default class Api extends Component {
     } = this.props
 
     store.dispatch({
-      type: 'GET_DATA',
+      type: GET,
       data: {
         'store':store,
         'Component' : this
@@ -39,7 +46,7 @@ export default class Api extends Component {
   del(id , component) {
     
     this.props.store.dispatch({
-      type: 'DEL_ITEM',
+      type: DEL,
       data: {
         'Component' : this ,
         'id': id
@@ -47,13 +54,13 @@ export default class Api extends Component {
     })
   }
 
-  edit(id , component) {
-    let title = prompt("Напишите новое описание задачи");
+  edit(id , title , component ) {
+    let newTitle = prompt("Напишите новое описание задачи", title);
     this.props.store.dispatch({
-      type: 'EDIT_ITEM',
+      type: EDIT,
       data: {
         'Component' : this ,
-        'title': title,
+        'title': newTitle,
         'id': id
       }
     })
@@ -90,7 +97,7 @@ export default class Api extends Component {
                         </button>
                         <button className='task__item-edit'
                           onClick={
-                            this.edit.bind(this,item.id)
+                            this.edit.bind(this,item.id,item.title)
                           }
                         >  
                         </button>

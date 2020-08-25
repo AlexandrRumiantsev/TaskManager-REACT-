@@ -1,7 +1,10 @@
 import React, { Component , useState } from 'react'
 import PropTypes from 'prop-types';
-import { popupp } from '../functions.js';
-
+/**
+     * Компонент приложения, который отвечает за отрисовку данных с сервера
+     * @component Menu
+     * @function add_item - Добавление элемента
+     */
 export default class Menu extends Component {
   
   add_item(){
