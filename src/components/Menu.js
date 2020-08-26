@@ -1,17 +1,17 @@
 import React, { Component , useState } from 'react'
 import PropTypes from 'prop-types';
+
+  
 /**
      * Компонент приложения, который отвечает за отрисовку данных с сервера
      * @component Menu
      * @function add_item - Добавление элемента
      */
 export default class Menu extends Component {
-  
-  add_item(){
+  componentDidMount(){
   	const component = this.props.app;
     const store = this.props.store;
-
-    document.getElementById('popupp').classList.add("active");
+    //Вешаю обработчик на попап, посли отрисовки компонента
     document.querySelector('.popupp__send')
     	.addEventListener("click", function(e){
     		let title = e.target.parentElement
@@ -25,6 +25,11 @@ export default class Menu extends Component {
 		      }
 	    	})
     	}, false);
+  }
+  add_item(){
+  
+    document.getElementById('popupp').classList.add("active");
+  
   }
   render() {
     return <div className='app__menu menu'>

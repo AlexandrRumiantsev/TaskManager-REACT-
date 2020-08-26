@@ -31,6 +31,7 @@ const ajax = function(type , component , url , param , action , store){
               actionAJAX == 'delItem'
             ){
                 document.location.reload(true)
+                return;
             }else{
               if(JSON.parse(request.response)['data']){
                 
@@ -101,7 +102,7 @@ export function addItem(type , component , title , store) {
     var params={
         title:title
     }
-    
+    console.log(params);
     ajax(
       'POST' , 
       component , 
