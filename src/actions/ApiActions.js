@@ -30,8 +30,7 @@ const ajax = function(type , component , url , param , action , store){
               actionAJAX == 'editItem' ||
               actionAJAX == 'delItem'
             ){
-                document.location.reload(true)
-                return;
+                 
             }else{
               if(JSON.parse(request.response)['data']){
                 

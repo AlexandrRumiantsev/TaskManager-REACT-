@@ -19,7 +19,7 @@ const initialState = {
 
         case 'DEL_ITEM':
           delItem("DELETE" , action.data.Component , action.data.id);
-        return state;
+        return [...state,action.data];
 
         case 'ADD_ITEM':
           addItem("POST" , action.data.Component , action.data.title , action.data.store);

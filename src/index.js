@@ -10,11 +10,14 @@ import configureStore from './store/configureStore'
 import './styles/app.scss';
 
 const store = configureStore()
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
 <Provider store={store}>
     <div className='app'> 
-        <App store={store} />
+    	<BrowserRouter>
+        	<App store={store} />
+        </BrowserRouter>
     </div>    
 </Provider>    
 , document.getElementById('app')

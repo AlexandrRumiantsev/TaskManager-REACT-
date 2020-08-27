@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import Menu from '../components/Menu'
+
 import Api from '../components/Api'
 
 import * as apiActions from '../actions/ApiActions'
@@ -35,7 +35,6 @@ class App extends Component {
     const { setApi } = this.props.apiActions
 
     return <div>
-      <Menu app={Api} store={store} />
       <Api name={api} store={store} setApi={setApi}/>
       <div id='popupp' class='popupp'>
         <span  

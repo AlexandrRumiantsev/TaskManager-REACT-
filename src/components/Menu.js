@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
      */
 export default class Menu extends Component {
   componentDidMount(){
-  	const component = this.props.app;
+  	const component = this.props.list;
     const store = this.props.store;
     //Вешаю обработчик на попап, посли отрисовки компонента
     document.querySelector('.popupp__send')

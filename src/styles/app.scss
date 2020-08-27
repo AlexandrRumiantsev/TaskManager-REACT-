@@ -111,4 +111,51 @@
     }
 }
 
+.detail-task{
+  position: relative;
+    padding: 20px;
+    margin: 20px auto;
+    background: white;
+    width: 500px;
+    height: 200px;
+    border: 1px solid #F2F2F2;
+    flex-wrap: wrap;
+    p{
+      width: 100%;
+      margin-bottom: 0;
+    }
+    .popupp__close{
+      width: 25px;
+      height: 25px;
+      border: none;
+      background: white;
+      background-repeat: no-repeat !important;
+      background: white;
+      background-position-y: center;
+      background-image: url("../assets/close.png");
+      position: absolute;
+      right: 5px;
+      top: 10px;
+
+    }
+    .popupp__send{
+        width: 148px;
+        height: 36px;
+        border: 1px solid #39B54A;
+        box-sizing: border-box;
+        border-radius: 4px;
+        background:white;
+        float: right;
+    }
+    .popupp__error{
+      color:red;
+    }
+    input{
+      width: 398px;
+      height: 40px;
+      background: #F2F2F2;
+      border-radius: 4px;
+    }
+}
+
 
