@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { useState } from 'react';
 import  {ReactDOM }  from 'react-dom';
 
+
 /**
      * Компонент приложения, который отвечает за отрисовку данных с сервера
      * @component
@@ -99,6 +100,7 @@ export default class Api extends Component {
     const { store } = this.props;
     this.state = {
       data: "",
+      popuppDisplay: 0
     };
     this.unsubscribe = store.subscribe(() => {
       this.setState(store.getState());
@@ -113,16 +115,6 @@ export default class Api extends Component {
       data: {
         store: store,
         Component: this,
-      },
-    });
-  }
-
-  del(id, component) {
-    this.props.store.dispatch({
-      type: DEL,
-      data: {
-        Component: this,
-        id: id,
       },
     });
   }
@@ -152,14 +144,22 @@ export default class Api extends Component {
     } else if (this.state.data.length == 0) {
       return (
         <div>
-          <Menu api={this} store={this.props.store} />
+          <Menu 
+                app={this.props.app}
+                api={this} 
+                store={this.props.store} 
+          />
           <div>Нет данных</div>
         </div>
       );
     } else {
       return (
         <div>
-          <Menu api={this} list={TaskList} store={this.props.store} />
+          <Menu 
+                app={this.props.app}
+                api={this} 
+                list={TaskList} 
+                store={this.props.store} />
           <Router>
             <Switch>
               <Route path="/task/:id">
