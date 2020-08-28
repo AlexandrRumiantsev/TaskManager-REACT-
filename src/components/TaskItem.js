@@ -13,7 +13,10 @@ export function TaskItem(that) {
         type: DEL,
         data: {
           'Component' : this ,
-          'id': id
+          'id': id ,
+          'callback': function(){
+             console.log('END DEL');
+          }
         }
       });
       that.component.setState(
@@ -31,15 +34,26 @@ export function TaskItem(that) {
       <div className="task__btn-block">
         <button
           className="task__item-del"
-          onClick={() => { handleDeleteElement(that.item.id , that) }}
+          onClick={
+                    () => { 
+                      handleDeleteElement
+                        (
+                          that.item.id , 
+                          that
+                        )
+                    }
+                  }
         ></button>
         <button
           className="task__item-edit"
-          onClick={that.component.edit.bind(
-            that.component,
-            that.item.id,
-            that.item.title
-          )}
+          onClick={
+            that.component.edit.bind(
+              that.component,
+              that.item.id,
+              that.item.title,
+              that.list
+            )
+          }
         ></button>
       </div>
     </div>

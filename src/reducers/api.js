@@ -18,7 +18,11 @@ const initialState = {
         return state;
 
         case 'DEL_ITEM':
-          delItem("DELETE" , action.data.Component , action.data.id);
+          delItem("DELETE" , 
+                    action.data.Component , 
+                    action.data.id ,
+                    action.data.callback
+                  );
         return [...state,action.data];
 
         case 'ADD_ITEM':
@@ -32,7 +36,12 @@ const initialState = {
         return state;
 
         case 'EDIT_ITEM':
-          editItem("POST" , action.data.Component , action.data.title , action.data.id);
+          editItem("POST" , 
+                  action.data.Component , 
+                  action.data.title , 
+                  action.data.id ,
+                  action.data.callback
+                  );
         return state;
 
 

@@ -34,38 +34,6 @@ export default class Menu extends Component {
 
 
   }
-  componentDidMount(){
-  	const component = this.props.list;
-    const store = this.props.store;
-
-    //Вешаю обработчик на попап, посли отрисовки компонента
-    //console.log(this.props.api.state.data.push({id: 2405, title: "hi react"}));
-    if(this.props.api.state.data){
-      console.log(this.props.api);
-      //this.props.api.setState(
-        //{ data : {id: 2405, title: "2221hi react"} }
-      //);
-
-    }
-      
-    //this.props.api.setState(
-          //{ data: that.component.state.data }
-     //);
-     /*
-    document.querySelector('.popupp__send')
-    	.addEventListener("click", function(e){
-    		let title = e.target.parentElement
-    			.querySelector('input').value;
-    		store.dispatch({
-		      type: 'ADD_ITEM',
-		      data: {
-		        'Component' : component ,
-		        'title': title,
-		        'store': store
-		      }
-	    	})
-    	}, false);*/
-  }
   add_item(){
      console.log(this.props.api);
      this.setState(

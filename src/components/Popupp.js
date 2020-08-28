@@ -10,6 +10,7 @@ export default  function Popupp(props) {
   };
 
   const [value, setValue] = useState('');
+  const [error, setError] = useState('');
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -24,7 +25,7 @@ export default  function Popupp(props) {
 		        'store': props.store,
 		        'callback': function(data , error){
 		        	if(data=='ERROR'){
-		        		console.log(error);
+		        		setError(error);
 		        		console.log(data);
 		        	}else{
 		        		props.api.state.data.push({
@@ -58,7 +59,9 @@ export default  function Popupp(props) {
 	          />
 	        </label>
 	        <input type="submit" value="Submit" />
-	        <p class='popupp__error'></p> 
+	        <p class='popupp__error'>
+	          {error}
+	        </p> 
 	    </form>
 	  );
 }

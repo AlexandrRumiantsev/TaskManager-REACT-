@@ -47,14 +47,32 @@ export default class Api extends Component {
     });
   }
 
-  edit(id, title, component) {
+  edit(id, title, component , list) {
     let newTitle = prompt("Напишите новое описание задачи", title);
+
     this.props.store.dispatch({
       type: EDIT,
       data: {
         Component: this,
         title: newTitle,
         id: id,
+        callback: () =>{
+            this.state.data.filter(
+              (item , index) => {
+                if(item.id == id){
+                  this.state.data.splice(index, 1);
+                  this.state.data.splice(index, 0, {
+                    id: item.id, 
+                    title: newTitle
+                  });
+                  console.log(this);
+                  this.setState(
+                    { refash: 1 }
+                  );
+                }
+              }
+            );
+        }
       },
     });
   }

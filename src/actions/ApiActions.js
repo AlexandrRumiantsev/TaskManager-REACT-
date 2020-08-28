@@ -89,13 +89,15 @@ export function getData(type , component) {
   * @param {object} component - Объект компонента
   * @param {string} id - идентификатор элемента
 **/
-export function delItem(type , component , id) {
+export function delItem(type , component , id , callback) {
   ajax(
     'DELETE' , 
     component , 
     'https://test.megapolis-it.ru/api/list/'+id,
     '',
-    'delItem'
+    'delItem' ,
+    '',
+    callback
   );
 }
 
@@ -133,8 +135,7 @@ export function addItem(type , component , title , store , callback) {
   * @param {object} component - Объект компонента
   * @param {string} title - новый заголовок задачи-элемента
 **/
-export function editItem(type , component , title , id) {
-  console.log(title);
+export function editItem(type , component , title , id , callback) {
   var params={
         title:title
     }
@@ -143,7 +144,9 @@ export function editItem(type , component , title , id) {
     component , 
     "https://test.megapolis-it.ru/api/list/"+id , 
     JSON.stringify(params),
-    'editItem'
+    'editItem',
+    '',
+    callback
   ); 
 
 }  
