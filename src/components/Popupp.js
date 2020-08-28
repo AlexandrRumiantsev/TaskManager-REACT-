@@ -1,54 +1,64 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react';
+
 
 export default  function Popupp(props) {
-
+  
   const closePopupp = () => {
-    console.log('closePopupp');
-    console.log(props);
     props.menu.setState(
           { popuppDisplay: 0 }
      );
   };
 
-  const myRef = React.createRef();
+  const [value, setValue] = useState('');
 
-  const addTask = (e) => {
-  	props.api.state.data.push({
-  		id: 9999, title: myRef.current.value
-  	});
-  	
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
     props.store.dispatch({
 		      type: 'ADD_ITEM',
 		      data: {
-		        'title': myRef.current.value,
-		        'store': props.store
+		        'title': value,
+		        'store': props.store,
+		        'callback': function(data , error){
+		        	if(data=='ERROR'){
+		        		console.log(error);
+		        		console.log(data);
+		        	}else{
+		        		props.api.state.data.push({
+					  		id: 9999, title: value
+					  	});
+					  	props.api.setState({
+					  		data: props.api.state.data
+					  	})
+					  	props.menu.setState(
+					       { popuppDisplay: 0 }
+					    );
+		        	}
+
+		        }
 		      }
 	    	})
- 
-    props.menu.setState(
-          { popuppDisplay: 0 }
-     );
-  };
+  }
 	  return (
-	    <div id='popupp' class='popupp'>
+	  	<form class='popupp' onSubmit={handleSubmit}>
 	        <span  
 	            class='popupp__close'
 	            	onClick={ closePopupp }
 	            >   
 	        </span>
-	        <p>Краткое описание</p>
-	        <p><input ref={myRef} type='text'/></p>
-	        <p class='popupp__error'></p>
-	        <button 
-		        class='popupp__send'
-		        onClick={ addTask }
-		    >
-	          Создать
-	        </button>
-	    </div>
+            <label>
+	          Краткое описание:
+	          <input 
+		          type="text" 
+		          value={value} 
+		          onChange={handleChange}
+	          />
+	        </label>
+	        <input type="submit" value="Submit" />
+	        <p class='popupp__error'></p> 
+	    </form>
 	  );
 }
-
-
-
-

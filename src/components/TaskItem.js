@@ -17,8 +17,8 @@ export function TaskItem(that) {
         }
       });
       that.component.setState(
-                  { data: that.component.state.data }
-                )
+          { data: that.component.state.data }
+      )
   };
   return (
     <div>

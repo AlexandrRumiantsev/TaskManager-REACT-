@@ -13,7 +13,14 @@ import {
      * @param {string} action - Тип действия запроса(можно объеденить с type).
      * @param {object} store - хранилище данных.
      */
-const ajax = function(type , component , url , param , action , store){
+const ajax = function(
+                      type , 
+                      component , 
+                      url , 
+                      param , 
+                      action , 
+                      store,
+                      callback){
     
 
     var request = new XMLHttpRequest();
@@ -30,7 +37,7 @@ const ajax = function(type , component , url , param , action , store){
               actionAJAX == 'editItem' ||
               actionAJAX == 'delItem'
             ){
-                 
+                 callback('SUCCES')
             }else{
               if(JSON.parse(request.response)['data']){
                 
@@ -43,7 +50,11 @@ const ajax = function(type , component , url , param , action , store){
               )
             }   
             }else{
-              document.getElementsByClassName('popupp__error')[0].innerHTML = JSON.parse(request.response)['error'];   
+              callback(
+                'ERROR',
+                JSON.parse(request.response)['error']
+              )
+              //document.getElementsByClassName('popupp__error')[0].innerHTML = JSON.parse(request.response)['error'];   
             }
           }
         } 
@@ -96,19 +107,19 @@ export function delItem(type , component , id) {
   * @param {object} component - Объект компонента
   * @param {string} title - новый заголовок задачи-элемента
 **/
-export function addItem(type , component , title , store) {
+export function addItem(type , component , title , store , callback) {
 
     var params={
         title:title
     }
-    console.log(params);
     ajax(
       'POST' , 
       component , 
       "https://test.megapolis-it.ru/api/list" , 
       JSON.stringify(params),
       'addItem',
-      store
+      store ,
+      callback
     );
 
 }

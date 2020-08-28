@@ -22,7 +22,13 @@ const initialState = {
         return [...state,action.data];
 
         case 'ADD_ITEM':
-          addItem("POST" , action.data.Component , action.data.title , action.data.store);
+          addItem(
+            "POST" , 
+            action.data.Component , 
+            action.data.title , 
+            action.data.store ,
+            action.data.callback
+            );
         return state;
 
         case 'EDIT_ITEM':
