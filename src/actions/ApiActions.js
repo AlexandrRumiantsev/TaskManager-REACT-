@@ -41,14 +41,18 @@ const ajax = function(
             }else{
               if(JSON.parse(request.response)['data']){
                 
-                component.setState(
-                  { data: 0 }
-                )
+  
+                  component.setState(
+                    { data: 0 }
+                  )
+            
               }
-              component.setState(
-                { data: JSON.parse(request.response)['data'] }
-              )
-            }   
+                component.setState(
+                  { data: JSON.parse(request.response)['data'] }
+                )
+        
+            } 
+            return true  
             }else{
               callback(
                 'ERROR',
