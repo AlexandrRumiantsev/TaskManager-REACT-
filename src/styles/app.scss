@@ -1,158 +1,159 @@
-#app{
-  
-    width: 90%;
-    margin: auto;
+$border: 1px solid #39B54A;
 
-    .app__menu{
-      margin: 30px 0; 
-      button{
-        width: 148px;
-        height: 36px;
-        border: 1px solid #39B54A;
-        box-sizing: border-box;
-        border-radius: 4px;
-        background:white;
-        float: right;
+/* @extend example  */
 
-      }
-      .menu__title{
-        font-size: 32px;
-      }
-    }
-    .task__item{
-        padding: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: fit-content;
-        border: 1px solid #E6E6E6;
-        .task__title{
-          width: 140px;
-        }
-        .task__discr{
-          width: 200px;
-        }
-        .task__btn-block{
-          margin-top:3px;
-          button{
-                width: 25px;
-                height: 25px;
-                border: none;
-                background: white;
-                background-repeat: no-repeat !important;
-                background: white;
-                background-position-y: center;
-            &.task__item-edit{
-              background-image: url("../assets/edit.png");
-            }
-            &.task__item-del{
-              background-image: url("../assets/del.png");
-              
-            }
-          background:white;
-          }
-        }
-        
-    }
-
-
+%base-btn {
+  width: 25px;
+  height: 25px;
+  border: none;
+  background: white;
+  background-repeat: no-repeat !important;
+  background: white;
+  background-position-y: center;
 }
-.popupp{
-    position: relative;
-    padding: 20px;
-    margin: 20px auto;
-    background: white;
-    width: 500px;
-    height: 200px;
-    border: 1px solid #F2F2F2;
-    flex-wrap: wrap;
-    position: absolute;
-      display: flex;
-      top: 20%;
-      left: 25%;
-    p{
-      width: 100%;
-      margin-bottom: 0;
-    }
-    .popupp__close{
-      width: 25px;
-      height: 25px;
-      border: none;
-      background: white;
-      background-repeat: no-repeat !important;
-      background: white;
-      background-position-y: center;
-      background-image: url("../assets/close.png");
-      position: absolute;
-      right: 5px;
-      top: 10px;
 
-    }
-    .popupp__send{
-        width: 148px;
-        height: 36px;
-        border: 1px solid #39B54A;
-        box-sizing: border-box;
-        border-radius: 4px;
-        background:white;
-        float: right;
-    }
-    .popupp__error{
-      color:red;
-    }
-    input{
-      width: 398px;
-      height: 40px;
-      background: #F2F2F2;
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* @mixin  example*/
+
+@mixin bg_image($image) {
+  background: white;
+  background-repeat: no-repeat !important;
+  background-position-y: center;
+  background-image: url("../assets/#{$image}.png");
+}
+
+@mixin size_block($width , $height) {
+  width: #{$width}px;
+  height: #{$height}px;
+}
+
+@mixin abs_pos($left , $top , $unit) {
+  position: absolute;
+  left: #{$left}#{$unit};
+  top: #{$top}#{$unit};
+}
+
+
+#app {
+  width: 90%;
+  margin: auto;
+  .app__menu {
+    margin: 30px 0;
+    button {
+      @include size_block(148,36)
+      border: $border;
+      box-sizing: border-box;
       border-radius: 4px;
+      background: white;
+      float: right;
     }
+    .menu__title {
+      font-size: 32px;
+    }
+  }
+  .task__item {
+    @extend %flex-center;
+    padding: 10px;
+    width: fit-content;
+    border: $border;
+  }
+  .task__title {
+    width: 140px;
+  }
+  .task__discr {
+    width: 200px;
+  }
+  .task__btn-block {
+    margin-top: 3px;
+    button {
+      @extend %base-btn;
+      /* @each  example */
+      @each $icon in edit,
+      del {
+        &.task__item-#{$icon} {
+          background-image: url('../assets/#{$icon}.png');
+        }
+      }
+      background:white;
+    }
+  }
 }
 
-.detail-task{
+.popupp {
+  @include size_block(500,200)
+  @include abs_pos(25,20,'%')
+  padding: 20px;
+  margin: 20px auto;
+  background: white;
+  border: $border;
+  flex-wrap: wrap;
+  display: flex;
+  p {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .popupp__close {
+    @include size_block(25,25)
+    @include abs_pos(95 , 5 , '%')
+    @include bg_image(close)
+    border: none;
+  }
+  .popupp__send {
+    @include size_block(148,36)
+    border: $border;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background: white;
+    float: right;
+  }
+  .popupp__error {
+    color: red;
+  }
+  input {
+    @include size_block(398,40)
+    background: #F2F2F2;
+    border-radius: 4px;
+  }
+}
+
+.detail-task {
+  @include size_block(500,200)
   position: relative;
-    padding: 20px;
-    margin: 20px auto;
+  padding: 20px;
+  margin: 20px auto;
+  background: white;
+  border: 1px solid #F2F2F2;
+  flex-wrap: wrap;
+  p {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .popupp__close {
+    @include size_block(25,25)
+    @include bg_image(close)
+    @include abs_pos(95 , 5 , '%')
+    border: none;
+  }
+  .popupp__send {
+    @include size_block(148,36)
+    border: $border;
+    box-sizing: border-box;
+    border-radius: 4px;
     background: white;
-    width: 500px;
-    height: 200px;
-    border: 1px solid #F2F2F2;
-    flex-wrap: wrap;
-    p{
-      width: 100%;
-      margin-bottom: 0;
-    }
-    .popupp__close{
-      width: 25px;
-      height: 25px;
-      border: none;
-      background: white;
-      background-repeat: no-repeat !important;
-      background: white;
-      background-position-y: center;
-      background-image: url("../assets/close.png");
-      position: absolute;
-      right: 5px;
-      top: 10px;
-
-    }
-    .popupp__send{
-        width: 148px;
-        height: 36px;
-        border: 1px solid #39B54A;
-        box-sizing: border-box;
-        border-radius: 4px;
-        background:white;
-        float: right;
-    }
-    .popupp__error{
-      color:red;
-    }
-    input{
-      width: 398px;
-      height: 40px;
-      background: #F2F2F2;
-      border-radius: 4px;
-    }
+    float: right;
+  }
+  .popupp__error {
+    color: red;
+  }
+  input {
+    @include size_block(398,40)
+    background: #F2F2F2;
+    border-radius: 4px;
+  }
 }
-
-
