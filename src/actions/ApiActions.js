@@ -12,6 +12,7 @@ import {
      * @param {object} param - Параметры запроса.
      * @param {string} action - Тип действия запроса(можно объеденить с type).
      * @param {object} store - хранилище данных.
+     * @param {function} callback - функция обратного вызова.
      */
 const ajax = function(
                       type , 
@@ -41,32 +42,31 @@ const ajax = function(
             }else{
               if(JSON.parse(request.response)['data']){
                 
-  
                   component.setState(
                     { data: 0 }
                   )
-            
+        
               }
                 component.setState(
                   { data: JSON.parse(request.response)['data'] }
                 )
         
             } 
-            return true  
+ 
             }else{
               callback(
                 'ERROR',
                 JSON.parse(request.response)['error']
-              )
-              //document.getElementsByClassName('popupp__error')[0].innerHTML = JSON.parse(request.response)['error'];   
+              ) 
+     
             }
           }
         } 
        
       
       if(param)
-        request.send(param)
-      else request.send()
+        return request.send(param)
+      else return request.send()
 }
 
 /**
@@ -75,14 +75,17 @@ const ajax = function(
   * @param {string} type - Тип отпрвляемого запроса
   * @param {object} component - Объект компонента
 **/
-export function getData(type , component) {
-      
-  ajax(
+export function getData(type , component ) { 
+  
+  return ajax(
     type , 
     component , 
-    'https://test.megapolis-it.ru/api/list'
+    'https://test.megapolis-it.ru/api/list',
+    '',
+    '',
+    '' 
   );
-
+  
 }
 
 
@@ -92,6 +95,7 @@ export function getData(type , component) {
   * @param {string} type - Тип отпрвляемого запроса
   * @param {object} component - Объект компонента
   * @param {string} id - идентификатор элемента
+  * @param {function} callback - функция обратного вызова.
 **/
 export function delItem(type , component , id , callback) {
   ajax(
@@ -112,6 +116,7 @@ export function delItem(type , component , id , callback) {
   * @param {string} type - Тип отпрвляемого запроса
   * @param {object} component - Объект компонента
   * @param {string} title - новый заголовок задачи-элемента
+  * @param {function} callback - функция обратного вызова.
 **/
 export function addItem(type , component , title , store , callback) {
 
@@ -138,6 +143,7 @@ export function addItem(type , component , title , store , callback) {
   * @param {string} type - Тип отпрвляемого запроса
   * @param {object} component - Объект компонента
   * @param {string} title - новый заголовок задачи-элемента
+  * @param {function} callback - функция обратного вызова.
 **/
 export function editItem(type , component , title , id , callback) {
   var params={
