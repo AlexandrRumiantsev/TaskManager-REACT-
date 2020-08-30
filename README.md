@@ -7,3 +7,4 @@ npm install --save-dev @babel/preset-env
 npm install --save-dev  @babel/react
 npm install --save @babel/polyfill
 npm i axios
+npm i @testing-library/react

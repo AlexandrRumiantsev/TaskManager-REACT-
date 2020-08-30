@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div>
+      <div
+        class="app__menu menu"
+      >
+        <span
+          class="menu__title"
+        >
+          Список задач
+        </span>
+        <button>
+          Добавить
+        </button>
+      </div>
+      <div>
+        Нет данных
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
