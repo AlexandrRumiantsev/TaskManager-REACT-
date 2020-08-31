@@ -12,7 +12,8 @@ export class TaskList extends Component {
     return (
       <div className="task">
         {this.props.component.state.data.map((item) => (
-          <TaskItem 
+          <TaskItem
+            key={item.id} 
             item={item} 
             component={this.props.component} 
             list={this}

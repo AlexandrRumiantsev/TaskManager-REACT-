@@ -8,25 +8,25 @@ export function TaskItem(that) {
       that.component.state.data.filter( ( item, index ) => {
         if(item.id == id) that.component.state.data.splice(index, 1);
       });
-      
+
       that.component.props.store.dispatch({
         type: DEL,
         data: {
           'Component' : this ,
           'id': id ,
           'callback': function(){
-             console.log('END DEL');
+             that.component.setState(
+                  { data: that.component.state.data }
+              )
           }
         }
       });
-      that.component.setState(
-          { data: that.component.state.data }
-      )
+      
   };
   return (
-    <div>
+    <div className="task__item">
       <span className="task__title">
-        <Link className="task__item" to={"/task/" + that.item.id}>
+        <Link to={"/task/" + that.item.id}>
           Задача №{that.item.id}
         </Link>
       </span>

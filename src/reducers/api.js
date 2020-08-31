@@ -23,7 +23,7 @@ const initialState = {
                     action.data.id ,
                     action.data.callback
                   );
-        return [...state,action.data];
+        return state;
 
         case 'ADD_ITEM':
           addItem(
@@ -42,7 +42,8 @@ const initialState = {
                   action.data.id ,
                   action.data.callback
                   );
-        return state;
+        const payloadObj = {data: action.data}  
+       return state;
 
 
         default:

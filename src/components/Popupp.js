@@ -44,9 +44,9 @@ export default  function Popupp(props) {
 	    	})
   }
 	  return (
-	  	<form class='popupp' onSubmit={handleSubmit}>
+	  	<form className='popupp' onSubmit={handleSubmit}>
 	        <span  
-	            class='popupp__close'
+	            className='popupp__close'
 	            	onClick={ closePopupp }
 	            >   
 	        </span>
@@ -59,7 +59,7 @@ export default  function Popupp(props) {
 	          />
 	        </label>
 	        <input type="submit" value="Submit" />
-	        <p class='popupp__error'>
+	        <p className='popupp__error'>
 	          {error}
 	        </p> 
 	    </form>
